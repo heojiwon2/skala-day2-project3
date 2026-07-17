@@ -1,5 +1,7 @@
 """
 Day1 종합실습 — 스키마 검증 + 저장 형식(CSV vs Parquet) 성능 비교 테스트
+작성자 : 울산 4반 허지원
+
 ====================================================================
 1) api.main()으로 3개 API(날씨/국가/IP)를 동시 수집
 2) Pydantic v2 모델로 각 응답을 검증 (실패 시 pytest.fail로 테스트 실패 처리)
@@ -186,9 +188,9 @@ def benchmark(name: str, data: list[dict]) -> dict:
 @pytest.mark.asyncio
 async def test_pipeline():
     """API 수집 → 스키마 검증 → 저장/재로딩 성능 비교까지 End2End로 검증한다."""
-    print("🚀 API 호출")
+    print("API 호출")
     weather_raw, country_raw, ip_raw = await main()
-    print("✓ API 완료")
+    print("API 완료")
 
     # 스키마 검증 실패 시 pytest.fail로 테스트를 명시적으로 실패시킨다.
     # (기존에는 ValidationError를 print만 하고 넘어가서, 검증이 깨져도
